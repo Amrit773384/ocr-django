@@ -4,10 +4,164 @@
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
     <script src="https://cdn.tailwindcss.com"></script>
-    <title>Document</title>
+    <link rel="icon" href="/static/img/logo.png" />
+    <title>About Project</title>
+    <style>
+        :root{
+            --theme-color:black;
+        }
+        *{
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+        main{
+            min-height: 100vh;
+            min-width: 100vw;
+            background: url(/static/img/bg8.jpg) 0 0 no-repeat;
+            background-size: cover;
+            align-items: center;
+            flex-direction: column;
+            display: flex;
+        }
+        header {
+            display: flex;
+            justify-content: space-evenly;
+            width: 70%;
+            height: fit-content;
+            margin-top: 1rem;
+        }
+        #icon-div {
+            background: url(/static/img/logo.png) no-repeat;
+            background-size: contain;
+            width: 50px;
+            height: 50px;
+            margin-top: 10px;
+            margin-left: 20px;
+
+        }
+        .nav-button {
+            font-size: 1.6rem;
+            color: rgba(255, 255, 255);
+            opacity: 0.8;
+            cursor: pointer;
+            transition: all 400ms;
+        }
+        .nav-button:hover {
+            color: lime;
+            text-decoration: underline;
+        }
+        section{
+            color: azure;
+            display:grid;
+            grid-template-columns: repeat(2,1fr);
+            overflow: hidden;
+            border-radius: 20px 20px 20px 20px;
+            margin: 40px;
+            width: 1000px;
+            min-height: 400px;
+            background-color: rgba(0, 0, 0, 0.6);
+            box-shadow: 0 0 15px 1px rgb(65, 62, 62), 0 0 18px 1px black;
+        }
+        label{
+            font-weight: bold;
+            font-size: 1.6rem;
+        }
+        p{
+            font-size: 1.1rem;
+            font-family:Geneva, Verdana, sans-serif;
+        }
+        .lefttop{
+            /* width: 50%; */
+            /* height: 50%; */
+            /* justify-content: space-between;
+            display: flex; */
+            /* flex-direction: column; */
+            padding: 10px;
+            border-right: 1px dotted rgb(107, 107, 107);
+        }
+        .righttop{
+            /* display: flex;
+            align-items: center; */
+            /* width: 50%;
+            height: 50%; */
+            padding: 10px;
+        }
+        .leftbottom{
+            /* width: 50%;
+            height: 50%; */
+            /* justify-content: space-between;
+            display: flex; */
+            /* flex-direction: column; */
+            padding: 10px;
+            border-right: 1px dotted rgb(107, 107, 107);
+        }
+        .rightbottom{
+            /* display: flex;
+            align-items: center; */
+            /* width: 50%;
+            height: 50%; */
+            padding: 10px;
+        }
+        @media (max-width:800px){
+            section{
+                width: 80%;
+                height: fit-content;
+                display: flex;
+                flex-direction: column;
+                justify-content: center;
+                align-items: center;
+            }
+            .leftdiv , .rightdiv{
+                width: 90%;
+            }
+            main{
+                height: fit-content;
+            }
+        }
+    </style>
 </head>
 <body>
-    
+    <main>
+        <header>
+            <a id="icon-div" href="admin">
+            </a>
+            <nav class="nav h-20 rounded-sm " style="margin: 1rem;font-size: 1.4rem;overflow: hidden;">
+                <ul class="flex justify-end  mx-10 space-x-10 ">
+                    <a class="font-bold nav-button" href="/">Home</a>
+                    <a class="font-bold nav-button" href="about" style="opacity:1">About</a>
+                    <a class="font-bold nav-button" href="contact">Contact</a>
+                </ul>
+            </nav>
+        </header>
+        <section>
+            <div class="lefttop">
+                <label for="">About Project</label>
+                <p>Optical character recognition (OCR) technology is a business solution for automating data extraction from printed or written text from a scanned document or image file and then converting the text into a machine-readable form to be used for data processing like editing or searching.</p>
+
+            </div>
+            <div class="righttop">
+                <label for="">Architecture of OCR</label>
+                <p>First the user gives an image or other format as the input. Next the image is preprocessed and it is converted into the format such that the model can work or recognition. Next, the model does the work of feature extraction.</p>
+            </div>
+            <div class="leftbottom">
+                <div style="display: flex;justify-content: space-between;">
+                    <label for="">Front End - Prajwal Uniyal | Alok</label>
+                </div>
+                
+                <p>Far far away, behind the word mountains, far from the countries Vokalia and Consonantia, there live the blind texts.</p>
+
+            </div>
+            <div class="rightbottom">
+                <div style="display: flex;justify-content: space-between;">
+                    <label for="">Back End - Amrit Singh | Gavin</label>
+                </div>
+                <p>To be better prepared to respond to ndore Police. At thtask is to predict which category of crime is most likely to occur given a time and place in Indore.</p>
+
+            </div>
+        </section>
+    </main>
 </body>
 </html>

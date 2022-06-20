@@ -1,6 +1,5 @@
 <!DOCTYPE html>
 <html lang="en">
-
 <head>
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
@@ -8,6 +7,11 @@
     <title>OCR</title>
     <link rel="icon" href="/static/img/logo.png">
     <style>
+        :root{
+            --submit-button-color : white;
+            --choosefile-button-color:white;
+            --center-background:rgb(19, 19, 19);
+        }
         .nav-button {
             font-size: 1.6rem;
             color: rgba(255, 255, 255, 0.9);
@@ -22,15 +26,26 @@
         }
 
         body {
-            background: url(/static/img/bg.jpg) no-repeat;
-            background-size: cover;
+            /* background: linear-gradient(-45deg ,aqua,red,pink); */
+            /* background-image: url(/static/img/pr.jpg) ;
+            background-position: 50% 0; */
+            /* background-size: 100% 100%; */
+            /* background-size: cover; */
+            background-color: rgb(0, 0, 0);
             display: flex;
             flex-direction: column;
             align-items: center;
-            min-height: 100%;
-            height: fit-content;
+            min-height: 100vh;
         }
-
+        body::before{
+            content: "";
+            background: url(/static/img/bg8.jpg);
+            background-size: 100% 100%;
+            position: absolute;
+            width: 100%;
+            height: 100%;
+            z-index: -4;
+        }
         footer {
             position: absolute;
             bottom: 0;
@@ -43,7 +58,6 @@
             height: 50px;
             margin-top: 10px;
             margin-left: 20px;
-
         }
 
         header {
@@ -63,19 +77,18 @@
         }
 
         .shadow {
-            position: relative;
-            margin-top: 60px;
+            margin-top: 40px;
             width: 60%;
-            height: 200px;
+            height: 300px;
             justify-content: space-evenly;
             display: flex;
             flex-direction: column;
             align-items: center;
-            background-color: rgb(20, 20, 20);
-            /* border: 5px solid yellow; */
+            background-color: rgba(0, 0, 0, 0.4);
+            border-radius: 20px 20px 20px 20px;
+            box-shadow: 0 0 15px 1px black;
         }
-
-        .shadow::before,
+        /* .shadow::before,
         .shadow::after {
             content: "";
             position: absolute;
@@ -105,7 +118,7 @@
             width: calc(100% + 2px);
             height: calc(100% + 2px);
             animation: spin 30s infinite linear;
-        }
+        } */
 
         @keyframes spin {
             0% {
@@ -121,92 +134,88 @@
             }
         }
 
-        .shadow::after {
-            filter: blur(15px);
-        }
-
         .neonbutton {
             user-select: none;
-            width: 200px;
-            height: 40px;
-            color: rgb(238, 34, 156);
+            width: 260px;
+            height: 55px;
+            color: var(--choosefile-button-color);
             cursor: pointer;
             font-size: 1.5rem;
             font-weight: bold;
-            border: 2px solid rgb(238, 34, 156);
+            border: 2px solid var(--choosefile-button-color);
             text-align: center;
             overflow: hidden;
-            padding-top: 0.2em;
-            text-shadow: 0 0 1px rgb(81, 81, 81), 0 0 3px rgb(119, 24, 81);
-            box-shadow: inset 0 0 10px 1px rgb(238, 34, 156),
-                0 0 6px 1px rgb(238, 34, 156);
+            padding-top: 0.5em;
+            /* text-shadow: 0 0 1px rgb(0, 0, 0), 0 0 4px rgb(0, 0, 0); */
+            box-shadow: inset 0 0 10px 1px var(--choosefile-button-color),
+                0 0 6px 1px var(--choosefile-button-color);
         }
 
         .neonbutton:hover {
-            background-color: rgb(238, 34, 156);
+            background-color: var(--choosefile-button-color);
             color: black;
-            box-shadow: inset 0 0 20px 2px rgb(238, 34, 156),
-                0 0 16px 2px rgb(238, 34, 156);
+            box-shadow: 0 0 12px 2px var(--choosefile-button-color);
         }
-
-        #outputdiv {
-            font-family: 'Times New Roman', Times, serif;
-            margin-bottom: 40px;
-            font-size: 1.2rem;
-            padding: 10px;
-            max-width: 100%;
-            line-height: 1.5;
-            border-radius: 5px;
-            min-width: 80%;
-            max-width: 80%;
-            color: white;
-            border: 1px solid rgba(19, 19, 19, 0.69);
-            box-shadow: 0 0 4px green;
-            background-color: rgba(2, 2, 2, 0.696);
-            height: 500px;
+        .neonbutton:active{
+            box-shadow:0 0 20px 2px var(--choosefile-button-color);
         }
-
-        #outputdiv:hover {
-            box-shadow: 0 0 6px green;
-        }
-
-        #outputdiv:focus {
-            outline: none;
-        }
-
+        
         .section {
             margin: 40px;
             width: 50%;
             display: flex;
             justify-content: space-evenly;
         }
-
-        .section div {
+        #selector{
+            margin-top: 20px;
             user-select: none;
-            color: aqua;
+            width: 260px;
+            height: 55px;
+            cursor: pointer;
+            font-size: 1.5rem;
+            font-weight: bold;
+            color:var(--choosefile-button-color);
+            border: 2px solid var(--choosefile-button-color);
+            text-align: center;
+            background-color: transparent;
+            overflow: hidden;
+            padding-top: 0.5em;
+            /* text-shadow: 0 0 1px rgb(0, 0, 0), 0 0 4px rgb(0, 0, 0); */
+            box-shadow: inset 0 0 10px 1px var(--choosefile-button-color),
+                0 0 6px 1px var(--choosefile-button-color);
+        }
+        #customsubmit{
+            overflow: hidden;
+            width: 200px;
+            user-select: none;
+            text-align: center;
+            color: var(--submit-button-color);
             font-size: 1.2rem;
             margin: 1rem;
             border: 1px solid currentColor;
             padding: 0.6em 1.6em;
             font-weight: bold;
             letter-spacing: 1px;
-            box-shadow: 0 0 10px 1px currentColor, inset 0 0 10px 1px currentColor;
-            text-shadow: 0 0 1px black, 0 0 2px currentColor;
+            box-shadow: 0 0 8px 1px currentColor, inset 0 0 10px 1px currentColor;
+            /* text-shadow: 0 0 1px black, 0 0 2px currentColor; */
             cursor: pointer;
-            border: 1px solid aqua;
+            border: 1px solid var(--submit-button-color);
         }
 
-        .section div:hover {
+        #customsubmit:hover {
             color: black;
-            box-shadow: 0 0 10px 2px aqua, inset 0 0 10px 2px aqua;
-            background-color: aqua;
+            box-shadow: 0 0 12px 2px var(--submit-button-color);
+            background-color: var(--submit-button-color);
         }
-
+        #customsubmit:active{
+            box-shadow: 0 0 20px 2px var(--submit-button-color);
+        }
         @media screen and (width:500px) {
             .outputdiv {
                 width: 90%;
             }
         }
+
     </style>
     <script src="https://cdn.tailwindcss.com"></script>
 </head>
@@ -224,43 +233,40 @@
         </nav>
     </header>
     <div class="center-div">
-        <div class="shadow">
-            <div id="custombutton" class="neonbutton">Choose File
-            </div>
+        <div class="shadow" style="box-shadow:  0 0 15px 1px black;">
             <form method="post" enctype="multipart/form-data" style="color:rgb(21, 20, 20)">
+                <div id="custombutton" class="neonbutton">Choose File
+                </div>
                 {% csrf_token %}
                 <!-- <input type="text" name="language"> -->
                 <input type="file" name="image" id="choose-file" hidden="hidden" accept=".pdf,.jpg,.jpeg,.png">
-                <input type="submit" class="neonbutton" />
+                <select id="selector" name="Language"> 
+                    <option selected style="color:black;" value="eng">English</option>
+                    <option style="color:black;" value="pan">Punjabi</option>
+                    <option style="color:black;" value="hin">Hindi</option> 
+                    <option style="color:black;" value="guj">Gujrati</option> 
+                    <option style="color:black;" value="tam">Tamil</option> 
+                    <option style="color:black;" value="kan">Kanada</option> 
+                    <option style="color:black;" value="mal">Malayalam</option> 
+                  </select>
+                <input type="submit" style="display: None;" id="realsubmit"/>
             </form>
+            <div id="customsubmit">Submit</div>
         </div>
     </div>
-    <section class="section">
-        <div id="doutput" onclick="downloadoutput()">Download Output</div>
-        <div>Availave Button</div>
-    </section>
-    <textarea name="" id="outputdiv">
-    {{output}}
-</textarea>
-
 </body>
-
-
-
-
 <script>
     var inputbutton = document.getElementById("choose-file");
     var custombutton = document.getElementById("custombutton")
     custombutton.addEventListener("click", function () {
         inputbutton.click();
     });
-    inputbutton.addEventListener("change", function () {
-        if (inputbutton.value) {
-            custombutton.innerHTML = inputbutton.value.slice(12);
-        }
-        else {
-            custombutton.innerHTML = "Please Choose your file.";
-        }
+    inputbutton.addEventListener("change", function () { 
+        custombutton.innerHTML = "DONE";
+    });
+    var customsubmit = document.getElementById("customsubmit")
+    customsubmit.addEventListener("click",function(){
+        document.getElementById("realsubmit").click()
     });
 </script>
 

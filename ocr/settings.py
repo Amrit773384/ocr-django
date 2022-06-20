@@ -26,10 +26,9 @@ SECRET_KEY = 'django-insecure-ir!=u0u0tuy)og7xladws_vyd!zxyg+sy85*5o^b@awehmsu9a
 # SECURITY WARNING: don't run with debug turned on in production!
 DEBUG = True
 
-ALLOWED_HOSTS = ['127.0.0.1',
-    '0.0.0.0',
-    'efde-45-127-195-183.ngrok.io',
-    '4e8f-103-239-235-49.ngrok.io'
+ALLOWED_HOSTS = [
+    '127.0.0.1',
+    'e3f3-103-239-235-10.ngrok.io',
     ]
 
 
@@ -142,5 +141,5 @@ MEDIA_URL  = '/inputimages/'
 CSRF_TRUSTED_ORIGINS = [
     'http://127.0.0.1:8000/',
     'https://efde-45-127-195-183.ngrok.io',
-    'https://4e8f-103-239-235-49.ngrok.io'
+    'https://e3f3-103-239-235-10.ngrok.io'
     ]

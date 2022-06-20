@@ -6,6 +6,7 @@
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <script src="https://cdn.tailwindcss.com"></script>
+    <link rel="icon" href="/static/img/logo.png" />
     <title>Contact US</title>
     <style>
         * {
@@ -17,22 +18,59 @@
         main {
             height: 100vh;
             width: 100vw;
-            background: url(/static/img/bg.jpg) 0 0 no-repeat;
+            background: url(/static/img/bg8.jpg) no-repeat;
             background-size: cover;
-            justify-content: center;
+            /* background-color: rgba(0, 0, 0, 0.5); */
+            align-items: center;
             display: flex;
+            flex-direction: column;
+        }
+        /* main::before{
+            content: "";
+            background-size: 100% 100%;
+            position: absolute;
+            z-index: -4;
+            height: 100%;
+            width: 100%;
+        } */
+        header {
+            display: flex;
+            justify-content: space-evenly;
+            width: 70%;
+            height: fit-content;
+            margin-top: 1rem;
+        }
+        #icon-div {
+            background: url(/static/img/logo.png) no-repeat;
+            background-size: contain;
+            width: 50px;
+            height: 50px;
+            margin-top: 10px;
+            margin-left: 20px;
+
+        }
+        .nav-button {
+            font-size: 1.6rem;
+            color: rgba(255, 255, 255, 0.9);
+            opacity: 0.8;
+            cursor: pointer;
+            transition: all 400ms;
         }
 
+        .nav-button:hover {
+            color: lime;
+            text-decoration: underline;
+        }
         section {
             display: flex;
             overflow: hidden;
-            border:solid 2px black;
+            /* border:solid 2px black; */
             border-radius: 20px 20px 20px 20px;
-            margin: 40px;
+            margin: 30px;
             width: 900px;
             height: 500px;
             min-height: 400px;
-            background-color: rgba(0, 0, 0, 0.308);
+            background-color: rgba(0, 0, 0, 0.6);
             box-shadow: 0 0 15px 1px ;
 
         }
@@ -104,8 +142,12 @@
             background-color: red;
             box-shadow: 0 0 10px red, 0 0 12px red;
         }
+        .button:focus{
+            box-shadow: 0 0 20px red, 0 0 16px red;
+        }
         .contact div{
             margin: 4px;
+            margin-left: 12px;
             padding: 0;
             text-align: start;
             font-family: sans-serif;
@@ -122,8 +164,8 @@
         .socialmedia div{
             margin: 0.6em;
             padding: 0;
-            height: 3em;
-            width: 3em;
+            height: 2.2em;
+            width: 2.2em;
 
         }
         @media (max-width:590px) {
@@ -150,12 +192,23 @@
 
 <body>
     <main>
+        <header>
+            <a id="icon-div" href="admin">
+            </a>
+            <nav class="nav h-20 rounded-sm " style="margin: 1rem;font-size: 1.4rem;overflow: hidden;">
+                <ul class="flex justify-end  mx-10 space-x-10 ">
+                    <a class="font-bold nav-button" href="/">Home</a>
+                    <a class="font-bold nav-button" href="about">About</a>
+                    <a class="font-bold nav-button" href="contact">Contact</a>
+                </ul>
+            </nav>
+        </header>
         <section>
 
             <div class="leftdiv">
                 <div class="text-zinc-100">
                     <h1 class="text-3xl font-bold font-sans ">Contact US</h1>
-                <p>Lorem  similique quia illum dolore vitae repellat, sequi quam soluta reiciendis perspiciatis doloribus distnctio, incidunt sint id possimus temporibu</p>
+                <p></p>
                 </div>
                 <div class="contact" style="margin: 0;padding:0;">
                     <div style="color: white;display: flex;">

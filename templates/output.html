@@ -1,0 +1,179 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Output</title>
+    <link rel="icon" href="/static/img/logo.png">
+    <script src="/static/javascript.js"></script>
+    <style>
+        :root{
+            --theme-color:black;
+            --button-color:aqua;
+        }
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        main {
+            min-height: 100vh;
+            min-width: 100vw;
+            background: url(/static/img/bg8.jpg) 0 0 no-repeat;
+            background-size: cover;
+            justify-content: center;
+            align-items: center;
+            display: flex;
+            flex-direction: column;
+        }
+
+        header {
+            height: 60px;
+            width: 80%;
+            margin-top: 40px;
+            display: flex;
+            flex-direction: row;
+            justify-content: space-evenly;
+
+        }
+
+        header button {
+            width: 440px;
+            height: 100%;
+            user-select: none;
+            color: var(--button-color);
+            font-size: 1.4rem;
+            text-align: center;
+            border: 1px solid currentColor;
+            font-weight: bold;
+            letter-spacing: 1px;
+            box-shadow: 0 0 6px 1px currentColor, inset 0 0 2px 1px currentColor;
+            cursor: pointer;
+            border: 1px solid black;
+            background-color: rgba(0, 0, 0, 0.5);
+
+        }
+
+        header button:hover {
+            color:black;
+            box-shadow: 0 0 6px 2px var(--button-color);
+            background-color: var(--button-color);
+        }
+        header button:focus{
+            box-shadow: 0 0 10px 2px var(--button-color);
+        }
+
+        textarea {
+            color:azure;
+            font-size: 1.2rem;
+            padding: 10px;
+            display: flex;
+            /* border: solid 2px black; */
+            border-radius: 20px 20px 20px 20px;
+            margin: 40px;
+            width: 80%;
+            height: 500px;
+            min-height: 400px;
+            background-color: rgba(0, 0, 0, 0.8);
+            box-shadow: 0 0 10px 1px var(--theme-color);
+        }
+        #outputdiv:focus {
+            outline: none;
+        }
+        #contextmenu{
+            position: fixed;
+            color:azure;
+            /* display: flex;  when we want to show , display should be flex */
+            display: none;
+            justify-content: space-evenly;
+            flex-direction: column;
+            align-items: center;
+            width: 260px;
+            height:240px;
+            background-color: rgba(21, 21, 21, 0.513);
+            box-shadow: 0 0 4px 1px rgba(88, 88, 88, 0.406);
+            border-radius: 2%;
+            transition: 100ms;
+        }
+        #contextmenu button{
+            padding-left: 10px;
+            width: 100%;
+            height: 10%;
+            color: azure;
+            background-color: rgba(0, 0, 0, 0);
+            text-align: left;
+            box-shadow: none;
+            border: none;
+            font-size: 1rem;
+            font-family:serif;
+            letter-spacing: 1px;
+            cursor: pointer;
+            border-radius: 2px 2px 2px 2px;
+            margin:  0 6px;
+            user-select: none;
+        }
+        #contextmenu div{
+            width: 96%;
+            border: 1px dashed rgba(128, 128, 128, 0.506);
+
+        }
+    </style>
+</head>
+
+<body>
+    <div id="contextmenu">
+        <button onclick="cutText()">Cut</button>
+        <button onclick="copyText()">Copy</button>
+        <button onclick="pasteClipboard()">Paste</button>
+        <div></div>
+        <button onclick="searchText()" id="searchgoogle">Search on Google</button>
+        <button onclick="listenText()">Listen Text</button>
+        <div></div>
+        <button onclick="formatSpacing()" id="formatspacing-button">Format Spacing</button>
+        <!-- <button onclick="formatLines()" id="formatlines-button">Format Line Spacing</button> -->
+
+    </div>
+    <main>
+        <header>
+            <button id="doutput" onclick="downloadoutput()" type="text">Download Output</button>
+            <button onclick="goBack()">Go Back</button>
+        </header>
+        <textarea name="" id="outputdiv" onclick="hideContext()">{{output}}</textarea>
+    </main>
+</body>
+
+<script>
+    function goBack(){
+        document.location.href = "/"
+    };
+    document.addEventListener("contextmenu",function(e){
+    e.preventDefault();
+    let context = document.getElementById("contextmenu");
+    let searchButton = document.getElementById("searchgoogle");
+    let element = document.getElementById("outputdiv");
+    let text = element.value;
+    // obtain the index of the first selected character
+    var start = element.selectionStart;
+    // obtain the index of the last selected character
+    var finish = element.selectionEnd;
+    // obtain the selected text
+    var selected_text = text.substring(start, finish);
+    if (selected_text.length > 0){
+        if(finish-start >6){
+            searchButton.innerHTML = "Search google for '"+text.substring(start,start+6)+"..";
+        }else{
+            searchButton.innerHTML = "Search google for '"+text.substring(start,finish)+"'";
+        }
+    }
+    else{
+        searchButton.innerHTML = "Search on Google";
+    };
+    context.style.top = e.y+"px";
+    context.style.left = e.x+"px";
+    context.style.display = "flex";
+})
+</script> 
+</html>
